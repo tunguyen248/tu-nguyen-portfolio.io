@@ -190,23 +190,26 @@
         <header>
             <div class="brand">Tu Nguyen</div>
             <nav>
-                <!-- 
-        <a href="#projects">Projects</a>
-        <a href="#design">System Design</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-        -->
+
+                <!-- <a href="#projects">Projects</a>
+                <a href="#design">System Design</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a> -->
+
             </nav>
         </header>
 
         <div class="hero">
             <h1>Software Engineer — backend & full-stack</h1>
             <p>
-                Software engineer focused on building reliable backend and full-stack systems. Experienced in API design, data modeling, correctness under retries, and production-minded testing and observability.
+                Software engineer focused on building reliable backend and full-stack systems. I design APIs, model
+                data, and build services that behave correctly under retries, partial failures, and real-world
+                production constraints.
             </p>
             <div class="cta">
                 <a class="btn primary" href="https://github.com/tunguyen248" target="_blank" rel="noreferrer">GitHub</a>
-                <a class="btn" href="https://www.linkedin.com/in/tu-nguyen-34969924b/" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a class="btn" href="https://www.linkedin.com/in/tu-nguyen-34969924b/" target="_blank"
+                    rel="noreferrer">LinkedIn</a>
                 <a class="btn" href="./Tu_Nguyen_Resume.pdf">Resume (PDF)</a>
             </div>
         </div>
@@ -217,31 +220,51 @@
                 <div class="card span6">
                     <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
                         <strong>Transaction Processing API + Immutable Ledger</strong>
-                        <span class="meta"><a href="https://github.com/tunguyen248/ledger-api" target="_blank" rel="noreferrer">repo</a></span>
+                        <span class="meta"><a href="https://github.com/tunguyen248/ledger-api" target="_blank"
+                                rel="noreferrer">repo</a></span>
                     </div>
-                    <div class="meta">REST API • Postgres • Idempotency • Outbox/Queue • Integration tests</div>
+                    <div class="meta">REST API • PostgreSQL • Idempotency • Transactional writes • Integration tests
+                    </div>
                     <ul>
-                        <li>Designed and implemented a REST API to process state-changing operations with an immutable ledger for auditability.</li>
-                        <li>PrevEnsured correctness under retries using idempotency keys and database constraints.</li>
-                        <li>Used a relational database with migrations and integration tests to validate end-to-end workflows.</li>
-                        <li>Containerized the service with Docker Compose to support local development and testing.</li>
+                        <li>Designed and implemented a REST API for processing state-changing operations backed by an
+                            immutable ledger for auditability.</li>
+                        <li>Ensured correctness under retries by using idempotency keys and database constraints to
+                            prevent duplicate side effects.</li>
+                        <li>Modeled transactional workflows in PostgreSQL with schema migrations and end-to-end
+                            integration tests.</li>
+                        <li>Built an asynchronous processing pipeline using an outbox pattern and background workers.
+                        </li>
+                        <li>Containerized the service with Docker Compose to support reproducible local development and
+                            testing.</li>
                     </ul>
+                    <div class="meta">
+                        Simulates a production-style financial transaction system with strict correctness and audit
+                        guarantees.
+                    </div>
+
                     <div class="tags">
-                        <span class="tag">Correctness</span><span class="tag">Transactions</span><span class="tag">Reliability</span>
+                        <span class="tag">Correctness</span><span class="tag">Transactions</span><span
+                            class="tag">Reliability</span>
                     </div>
                 </div>
 
                 <div class="card span6">
                     <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
                         <strong>Fraud / Risk Scoring Service</strong>
-                        <span class="meta"><a href="https://github.com/tunguyen248/risk-service" target="_blank" rel="noreferrer">repo</a></span>
+                        <span class="meta"><a href="https://github.com/tunguyen248/risk-service" target="_blank"
+                                rel="noreferrer">repo</a></span>
                     </div>
-                    <div class="meta">Feature pipeline • Explainable scoring • Offline evaluation • Threshold tuning</div>
+                    <div class="meta">Feature pipeline • Explainable scoring • Offline evaluation • Threshold tuning
+                    </div>
                     <ul>
-                        <li>Built a service that ingests event data, extracts features, and produces a normalized risk or confidence score.</li>
-                        <li>Implemented both rule-based logic and a lightweight statistical model for comparison.</li>
-                        <li>Evaluated model performance using offline metrics and documented threshold tradeoffs.</li>
-                        <li>Designed the system to support asynchronous ingestion and batch or near-real-time scoring.</li>
+                        <li>Built a service that ingests event data, extracts features, and produces a normalized risk
+                            score for downstream decision-making.</li>
+                        <li>Implemented both rule-based logic and a lightweight statistical model to compare
+                            interpretability and predictive behavior.</li>
+                        <li>Evaluated model performance using offline metrics and documented precision/recall tradeoffs
+                            for threshold selection.</li>
+                        <li>Designed the system to support asynchronous ingestion and batch or near-real-time scoring
+                            workflows.</li>
                     </ul>
                     <div class="tags">
                         <span class="tag">Data</span><span class="tag">Risk</span><span class="tag">APIs</span>
@@ -251,34 +274,40 @@
                 <div class="card span6">
                     <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
                         <strong>PDF Spaced Repetition (Capstone)</strong>
-                        <span class="meta"><a href="https://github.com/tunguyen248/pdf-spaced-repetition-main" target="_blank" rel="noreferrer">repo</a></span>
+                        <span class="meta"><a href="https://github.com/tunguyen248/pdf-spaced-repetition-main"
+                                target="_blank" rel="noreferrer">repo</a></span>
                     </div>
-                    <div class="meta">React/TypeScript • Local-first persistence • Rendering pipeline</div>
+                    <div class="meta">React • TypeScript • Local-first persistence • Rendering pipeline</div>
                     <ul>
-                        <li>Developed a client-side web application for document annotation and spaced-repetition learning.</li>
+                        <li>Developed a client-side web application for annotating documents and practicing
+                            spaced-repetition learning.</li>
                         <li>Designed a durable local data model for highlights, notes, and review scheduling.</li>
-                        <li>Optimized rendering and interaction performance for large documents.</li>
-                        <li>Emphasized maintainable component structure and predictable state management.</li>
+                        <li>Optimized rendering and interaction performance for large PDF documents.</li>
+                        <li>Built a maintainable component architecture with predictable state management.</li>
                     </ul>
                     <div class="tags">
-                        <span class="tag">Frontend</span><span class="tag">UX</span><span class="tag">Data modeling</span>
+                        <span class="tag">Frontend</span><span class="tag">UX</span><span class="tag">Data
+                            Modeling</span>
                     </div>
                 </div>
 
                 <div class="card span6">
                     <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
                         <strong>Air-to-Ground Search (Senior Design)</strong>
-                        <span class="meta"><a href="https://github.com/tunguyen248/Air-to-ground-search" target="_blank" rel="noreferrer">repo</a></span>
+                        <span class="meta"><a href="https://github.com/tunguyen248/Air-to-ground-search" target="_blank"
+                                rel="noreferrer">repo</a></span>
                     </div>
-                    <div class="meta">C++ • Pathfinding • Python integration • GUI</div>
+                    <div class="meta">C++ • Pathfinding • Python integration • Visualization</div>
                     <ul>
-                        <li>Implemented a grid-based search and path-planning system using heuristic algorithms.</li>
-                        <li>Integrated a C++ core engine with Python for configuration and data generation.</li>
+                        <li>Implemented a grid-based path planning system using heuristic search algorithms.</li>
+                        <li>Integrated a C++ core engine with Python for configuration, simulation, and data generation.
+                        </li>
                         <li>Built a graphical interface to visualize search behavior and algorithm performance.</li>
-                        <li>Analyzed tradeoffs in runtime, memory usage, and path optimality.</li>
+                        <li>Analyzed tradeoffs between runtime, memory usage, and path optimality.</li>
                     </ul>
                     <div class="tags">
-                        <span class="tag">Algorithms</span><span class="tag">Systems</span><span class="tag">Integration</span>
+                        <span class="tag">Algorithms</span><span class="tag">Systems</span><span
+                            class="tag">Integration</span>
                     </div>
                 </div>
             </div>
@@ -290,37 +319,47 @@
 
                 <div class="card span6">
                     <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                        <strong>Ameren Digital Co-op</strong>
-
+                        <strong>Ameren Digital Co-op - Software Engineering Intern</strong>
                     </div>
+
                     <ul>
-                        <li>Contributed to Switching Manager, a .NET-based electrical grid management system, ensuring reliable power distribution</li>
-                        <li>Developed UI components and enhanced database queries (SQL) to improve system performance</li>
-                        <li>Collaborated with senior developers to design, implement, and test new features following Ameren's coding guidelines</li>
-                        <li>Automated data processing tasks using Excel and AutoIt, improving operational efficiency</li>
+                        <li>Contributed to Switching Manager, a .NET-based electrical grid management system supporting
+                            reliable power distribution.</li>
+                        <li>Developed UI components and optimized SQL queries to improve system responsiveness and
+                            operational workflows.</li>
+                        <li>Collaborated with senior engineers to design, implement, and test new features following
+                            internal coding standards.</li>
+                        <li>Automated recurring data processing tasks using Excel and AutoIt, reducing manual
+                            operational overhead.</li>
                     </ul>
                 </div>
 
                 <div class="card span6">
                     <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                        <strong>Capstone I</strong>
+                        <strong>Capstone I - Team Lead</strong>
                     </div>
                     <ul>
-                        <li>Led a team of 3 in developing a spaced repetition PDF viewer, allowing users to annotate, summarize, and interact with PDFs</li>
-                        <li>Designed a user-friendly React-based web application with an interactive PDF viewer</li>
-                        <li>Developed a structured system model to improve usability and maintainability</li>
+                        <li>Led a team of three in developing a spaced-repetition PDF viewer for annotating and
+                            reviewing technical documents.</li>
+                        <li>Designed and implemented a React-based web application with an interactive PDF rendering
+                            pipeline.</li>
+                        <li>Defined a structured system model to improve maintainability and usability.</li>
                     </ul>
 
                 </div>
                 <div class="card span6">
                     <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                        <strong>Capstone II</strong>
+                        <strong>Capstone II - Software Engineer</strong>
                     </div>
                     <ul>
-                        <li>Designed and implemented a search algorithm for an air-to-ground search system, optimizing efficiency for Boeing's use case</li>
-                        <li>Developed an interactive GUI to visualize flight paths and search areas in a 2D </li>
-                        <li>Collaborated with a team of 3 to integrate search heuristics, obstacle detection, and route optimization</li>
-                        <li>Followed Scrum methodology for agile development and iterative improvements</li>
+                        <li>Designed and implemented a search algorithm for an air-to-ground search system optimized for
+                            efficiency and coverage.</li>
+                        <li>Developed an interactive GUI to visualize flight paths and search regions in two dimensions.
+                        </li>
+                        <li>Collaborated with a team of three to integrate heuristics, obstacle detection, and route
+                            optimization.</li>
+                        <li>Worked in an iterative Scrum-based workflow with regular design reviews and refinements.
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -334,10 +373,12 @@
                     <div>
                         <strong>Reliable State-Changing Service Architecture</strong>
                         <ul>
-                            <li>API layer validates requests and persists state changes in a transactional database.</li>
+                            <li>API layer validates requests and persists state changes in a transactional database.
+                            </li>
                             <li>Idempotency keys prevent duplicate side effects during retries or network failures.</li>
                             <li>Asynchronous workers process events generated by the primary service.</li>
-                            <li>Observability includes structured logging, request correlation IDs, and latency/error metrics.</li>
+                            <li>Observability includes structured logging, request correlation IDs, and latency/error
+                                metrics.</li>
                             <li>System behavior under partial failure is documented and tested.</li>
                         </ul>
                     </div>
@@ -387,6 +428,3 @@
 
 
 </html>
-
-
-
