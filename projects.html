@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projects | Tu Nguyen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">Tu Nguyen</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="design.html">System Design</a>
+                <a href="skills.html">Skills</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="grid">
+
+                <div class="card span6">
+                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                        <strong>Transaction Processing API + Immutable Ledger</strong>
+                        <span class="meta"><a href="https://github.com/tunguyen248/ledger-api" target="_blank"
+                                rel="noreferrer">repo</a></span>
+                    </div>
+                    <div class="meta">REST API • PostgreSQL • Idempotency • Transactional writes • Integration tests
+                    </div>
+                    <ul>
+                        <li>Designed and implemented a REST API for processing state-changing operations backed by an
+                            immutable ledger for auditability.</li>
+                        <li>Ensured correctness under retries by using idempotency keys and database constraints to
+                            prevent duplicate side effects.</li>
+                        <li>Modeled transactional workflows in PostgreSQL with schema migrations and end-to-end
+                            integration tests.</li>
+                        <li>Built an asynchronous processing pipeline using an outbox pattern and background workers.
+                        </li>
+                        <li>Containerized the service with Docker Compose to support reproducible local development and
+                            testing.</li>
+                    </ul>
+                    <div class="meta">
+                        Simulates a production-style financial transaction system with strict correctness and audit
+                        guarantees.
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">Correctness</span><span class="tag">Transactions</span><span
+                            class="tag">Reliability</span>
+                    </div>
+                </div>
+
+                <div class="card span6">
+                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                        <strong>Fraud / Risk Scoring Service</strong>
+                        <span class="meta"><a href="https://github.com/tunguyen248/risk-service" target="_blank"
+                                rel="noreferrer">repo</a></span>
+                    </div>
+                    <div class="meta">Feature pipeline • Explainable scoring • Offline evaluation • Threshold tuning
+                    </div>
+                    <ul>
+                        <li>Built a service that ingests event data, extracts features, and produces a normalized risk
+                            score for downstream decision-making.</li>
+                        <li>Implemented both rule-based logic and a lightweight statistical model to compare
+                            interpretability and predictive behavior.</li>
+                        <li>Evaluated model performance using offline metrics and documented precision/recall tradeoffs
+                            for threshold selection.</li>
+                        <li>Designed the system to support asynchronous ingestion and batch or near-real-time scoring
+                            workflows.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Data</span><span class="tag">Risk</span><span class="tag">APIs</span>
+                    </div>
+                </div>
+
+                <div class="card span6">
+                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                        <strong>PDF Spaced Repetition (Capstone)</strong>
+                        <span class="meta"><a href="https://github.com/tunguyen248/pdf-spaced-repetition-main"
+                                target="_blank" rel="noreferrer">repo</a></span>
+                    </div>
+                    <div class="meta">React • TypeScript • Local-first persistence • Rendering pipeline</div>
+                    <ul>
+                        <li>Developed a client-side web application for annotating documents and practicing
+                            spaced-repetition learning.</li>
+                        <li>Designed a durable local data model for highlights, notes, and review scheduling.</li>
+                        <li>Optimized rendering and interaction performance for large PDF documents.</li>
+                        <li>Built a maintainable component architecture with predictable state management.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Frontend</span><span class="tag">UX</span><span class="tag">Data
+                            Modeling</span>
+                    </div>
+                </div>
+
+                <div class="card span6">
+                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                        <strong>Air-to-Ground Search (Senior Design)</strong>
+                        <span class="meta"><a href="https://github.com/tunguyen248/Air-to-ground-search" target="_blank"
+                                rel="noreferrer">repo</a></span>
+                    </div>
+                    <div class="meta">C++ • Pathfinding • Python integration • Visualization</div>
+                    <ul>
+                        <li>Implemented a grid-based path planning system using heuristic search algorithms.</li>
+                        <li>Integrated a C++ core engine with Python for configuration, simulation, and data generation.
+                        </li>
+                        <li>Built a graphical interface to visualize search behavior and algorithm performance.</li>
+                        <li>Analyzed tradeoffs between runtime, memory usage, and path optimality.</li>
+                    </ul>
+                    <div class="tags">
+                        <span class="tag">Algorithms</span><span class="tag">Systems</span><span
+                            class="tag">Integration</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>© <span id="y"></span> Tu Nguyen</footer>
+    </div>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
