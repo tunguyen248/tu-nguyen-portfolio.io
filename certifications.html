@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Projects | Tu Nguyen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">Tu Nguyen</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="design.html">System Design</a>
+                <a href="skills.html">Skills</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <section>
+            <h2>Certifications</h2>
+            <div class="grid">
+                <div class="card span6">
+                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                        <strong>Amazon Junior Java Developer by Coursera</strong>
+                    </div>
+                </div>
+
+                <div class="card span6">
+                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                        <strong>AWS</strong>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <footer>© <span id="y"></span> Tu Nguyen</footer>
+    </div>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
