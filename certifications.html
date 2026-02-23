@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Projects | Tu Nguyen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Certifications | Tu Nguyen</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,6 +17,7 @@
                 <a href="projects.html">Projects</a>
                 <a href="design.html">System Design</a>
                 <a href="skills.html">Skills</a>
+                <a href="certifications.html">Certifications</a>
                 <a href="contact.html">Contact</a>
             </nav>
         </header>
@@ -24,24 +26,70 @@
             <h2>Certifications</h2>
             <div class="grid">
                 <div class="card span6">
-                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                        <strong>Amazon Junior Java Developer by Coursera</strong>
+                    <strong>Google AI Essentials (Coursera)</strong>
+                    <div class="meta">5 certificates</div>
+                    <div class="cert-progress" aria-label="Google AI Essentials progress">
+                        <div class="cert-progress-label">Progress: 5/5 completed</div>
+                        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="5" aria-valuetext="5 out of 5 completed">
+                            <span class="progress-fill" style="width: 100%;"></span>
+                        </div>
                     </div>
+                    <ul>
+                        <li><a class="cert-link" href="certifications/google-ai-essentials-introduction-to-ai.pdf">Introduction to AI</a></li>
+                        <li><a class="cert-link" href="certifications/google-ai-essentials-maximize-productivity-with-ai-tools.pdf">Maximize Productivity With AI Tools</a></li>
+                        <li><a class="cert-link" href="certifications/google-ai-essentials-discover-the-art-of-prompting.pdf">Discover the Art of Prompting</a></li>
+                        <li><a class="cert-link" href="certifications/google-ai-essentials-use-ai-responsibly.pdf">Use AI Responsibly</a></li>
+                        <li><a class="cert-link" href="certifications/google-ai-essentials-stay-ahead-of-the-ai-curve.pdf">Stay Ahead of the AI Curve</a></li>
+                    </ul>
                 </div>
 
                 <div class="card span6">
-                    <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-                        <strong>AWS</strong>
+                    <strong>Generative AI for Data Engineers (Coursera)</strong>
+                    <div class="meta">3 certificates</div>
+                    <div class="cert-progress" aria-label="Generative AI for Data Engineers progress">
+                        <div class="cert-progress-label">Progress: 1/3 completed</div>
+                        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="3" aria-valuenow="1" aria-valuetext="1 out of 3 completed">
+                            <span class="progress-fill" style="width: 33.33%;"></span>
+                        </div>
                     </div>
-                    
+                    <ul>
+                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-introduction-and-applications.pdf">Generative AI: Introduction and Applications</a></li>
+                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-prompt-engineering-basics.pdf">Generative AI: Prompt Engineering Basics</a></li>
+                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-elevate-your-data-engineering-career.pdf">Generative AI: Elevate your Data Engineering Career</a></li>
+                    </ul>
+                </div>
+
+                <div class="card span12 pdf-viewer-card">
+                    <div class="pdf-viewer-header">
+                        <strong id="viewer-title">Certificate Viewer</strong>
+                        <span class="meta" id="viewer-status">Select a certificate above to preview it here.</span>
+                    </div>
+                    <iframe id="certificate-viewer" title="Certification PDF viewer" class="pdf-viewer"
+                        src="about:blank"></iframe>
                 </div>
             </div>
+            <p class="meta">Add your PDF files to the <code>certifications/</code> folder with the same filenames used in the links above.</p>
         </section>
 
         <footer>© <span id="y"></span> Tu Nguyen</footer>
     </div>
     <script>
         document.getElementById("y").textContent = new Date().getFullYear();
+
+        const viewer = document.getElementById("certificate-viewer");
+        const viewerTitle = document.getElementById("viewer-title");
+        const viewerStatus = document.getElementById("viewer-status");
+
+        document.querySelectorAll(".cert-link").forEach((link) => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                const pdfPath = link.getAttribute("href");
+                viewer.src = pdfPath;
+                viewerTitle.textContent = link.textContent;
+                viewerStatus.textContent = "Previewing PDF in-page.";
+                viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        });
     </script>
 </body>
 
