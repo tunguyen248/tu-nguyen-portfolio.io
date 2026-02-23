@@ -53,19 +53,43 @@
                         </div>
                     </div>
                     <ul>
-                        <li><a href="certifications/Generative AI - Introduction and Applications Certification.pdf" target="_blank" rel="noreferrer">Generative AI: Introduction and Applications</a></li>
-                        <li><a href="" target="_blank" rel="noreferrer">Generative AI: Prompt Engineering Basics</a></li>
-                        <li><a href="" target="_blank" rel="noreferrer">Generative AI: Elevate your Data Engineering Career</a></li>
+                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-introduction-and-applications.pdf">Generative AI: Introduction and Applications</a></li>
+                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-prompt-engineering-basics.pdf">Generative AI: Prompt Engineering Basics</a></li>
+                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-elevate-your-data-engineering-career.pdf">Generative AI: Elevate your Data Engineering Career</a></li>
                     </ul>
                 </div>
+
+                <div class="card span12 pdf-viewer-card">
+                    <div class="pdf-viewer-header">
+                        <strong id="viewer-title">Certificate Viewer</strong>
+                        <span class="meta" id="viewer-status">Select a certificate above to preview it here.</span>
+                    </div>
+                    <iframe id="certificate-viewer" title="Certification PDF viewer" class="pdf-viewer"
+                        src="about:blank"></iframe>
+                </div>
             </div>
-            
+            <p class="meta">Add your PDF files to the <code>certifications/</code> folder with the same filenames used in the links above.</p>
         </section>
 
         <footer>© <span id="y"></span> Tu Nguyen</footer>
     </div>
     <script>
         document.getElementById("y").textContent = new Date().getFullYear();
+
+        const viewer = document.getElementById("certificate-viewer");
+        const viewerTitle = document.getElementById("viewer-title");
+        const viewerStatus = document.getElementById("viewer-status");
+
+        document.querySelectorAll(".cert-link").forEach((link) => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                const pdfPath = link.getAttribute("href");
+                viewer.src = pdfPath;
+                viewerTitle.textContent = link.textContent;
+                viewerStatus.textContent = "Previewing PDF in-page.";
+                viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        });
     </script>
 </body>
 
