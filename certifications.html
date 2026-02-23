@@ -35,11 +35,11 @@
                         </div>
                     </div>
                     <ul>
-                        <li><a href="certifications/Introduction to AI Certification.pdf" target="_blank" rel="noreferrer">Introduction to AI</a></li>
-                        <li><a href="certifications/Maximize Productivity With AI Tools Certification.pdf" target="_blank" rel="noreferrer">Maximize Productivity With AI Tools</a></li>
-                        <li><a href="certifications/Discover the Art of Prompting Certification.pdf" target="_blank" rel="noreferrer">Discover the Art of Prompting</a></li>
-                        <li><a href="certifications/Use AI Responsibly Certification.pdf" target="_blank" rel="noreferrer">Use AI Responsibly</a></li>
-                        <li><a href="certifications/Stay Ahead of the AI Curve Certification.pdf" target="_blank" rel="noreferrer">Stay Ahead of the AI Curve</a></li>
+                        <li><a class="cert-link" href="certifications/Introduction to AI Certification.pdf">Introduction to AI</a></li>
+                        <li><a class="cert-link" href="certifications/Maximize Productivity With AI Tools Certification.pdf" >Maximize Productivity With AI Tools</a></li>
+                        <li><a class="cert-link" href="certifications/Discover the Art of Prompting Certification.pdf" >Discover the Art of Prompting</a></li>
+                        <li><a class="cert-link" href="certifications/Use AI Responsibly Certification.pdf">Use AI Responsibly</a></li>
+                        <li><a class="cert-link" href="certifications/Stay Ahead of the AI Curve Certification.pdf">Stay Ahead of the AI Curve</a></li>
                     </ul>
                 </div>
 
@@ -53,9 +53,9 @@
                         </div>
                     </div>
                     <ul>
-                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-introduction-and-applications.pdf">Generative AI: Introduction and Applications</a></li>
-                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-prompt-engineering-basics.pdf">Generative AI: Prompt Engineering Basics</a></li>
-                        <li><a class="cert-link" href="certifications/generative-ai-for-data-engineers-elevate-your-data-engineering-career.pdf">Generative AI: Elevate your Data Engineering Career</a></li>
+                        <li><a class="cert-link" href="certifications/Generative AI - Introduction and Applications Certification.pdf">Generative AI: Introduction and Applications</a></li>
+                        <li><a class="cert-link" href="">Generative AI: Prompt Engineering Basics</a></li>
+                        <li><a class="cert-link" href="">Generative AI: Elevate your Data Engineering Career</a></li>
                     </ul>
                 </div>
 
@@ -68,29 +68,11 @@
                         src="about:blank"></iframe>
                 </div>
             </div>
-            <p class="meta">Add your PDF files to the <code>certifications/</code> folder with the same filenames used in the links above.</p>
         </section>
 
         <footer>© <span id="y"></span> Tu Nguyen</footer>
     </div>
-    <script>
-        document.getElementById("y").textContent = new Date().getFullYear();
-
-        const viewer = document.getElementById("certificate-viewer");
-        const viewerTitle = document.getElementById("viewer-title");
-        const viewerStatus = document.getElementById("viewer-status");
-
-        document.querySelectorAll(".cert-link").forEach((link) => {
-            link.addEventListener("click", (event) => {
-                event.preventDefault();
-                const pdfPath = link.getAttribute("href");
-                viewer.src = pdfPath;
-                viewerTitle.textContent = link.textContent;
-                viewerStatus.textContent = "Previewing PDF in-page.";
-                viewer.scrollIntoView({ behavior: "smooth", block: "start" });
-            });
-        });
-    </script>
+    
 </body>
 
 </html>
