@@ -26,20 +26,20 @@
             <h2>Certifications</h2>
             <div class="grid">
                 <div class="card span6">
-                    <strong>Google AI Essentials (Coursera)</strong>
+                    <strong data-pdf="certifications/Google AI Essentials Certification.pdf" >Google AI Essentials (Coursera)</strong>
                     <div class="meta">5 certificates</div>
-                    <div class="cert-progress" href="certifications/Google AI Essentials Certification.pdf" aria-label="Google AI Essentials progress">
+                    <div class="cert-progress" aria-label="Google AI Essentials progress">
                         <div class="cert-progress-label">Progress: 5/5 completed</div>
                         <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="5" aria-valuetext="5 out of 5 completed">
                             <span class="progress-fill" style="width: 100%;"></span>
                         </div>
                     </div>
                     <ul>
-                        <li><a class="cert-link" href="certifications/Introduction to AI Certification.pdf">Introduction to AI</a></li>
-                        <li><a class="cert-link" href="certifications/Maximize Productivity With AI Tools Certification.pdf" >Maximize Productivity With AI Tools</a></li>
-                        <li><a class="cert-link" href="certifications/Discover the Art of Prompting Certification.pdf" >Discover the Art of Prompting</a></li>
-                        <li><a class="cert-link" href="certifications/Use AI Responsibly Certification.pdf">Use AI Responsibly</a></li>
-                        <li><a class="cert-link" href="certifications/Stay Ahead of the AI Curve Certification.pdf">Stay Ahead of the AI Curve</a></li>
+                        <li><a class="cert-link" data-pdf="certifications/Introduction to AI Certification.pdf">Introduction to AI</a></li>
+                        <li><a class="cert-link" data-pdf="certifications/Maximize Productivity With AI Tools Certification.pdf" >Maximize Productivity With AI Tools</a></li>
+                        <li><a class="cert-link" data-pdf="certifications/Discover the Art of Prompting Certification.pdf" >Discover the Art of Prompting</a></li>
+                        <li><a class="cert-link" data-pdf="certifications/Use AI Responsibly Certification.pdf">Use AI Responsibly</a></li>
+                        <li><a class="cert-link" data-pdf="certifications/Stay Ahead of the AI Curve Certification.pdf">Stay Ahead of the AI Curve</a></li>
                     </ul>
                 </div>
 
@@ -53,19 +53,26 @@
                         </div>
                     </div>
                     <ul>
-                        <li><a class="cert-link" href="certifications/Generative AI - Introduction and Applications Certification.pdf">Generative AI: Introduction and Applications</a></li>
-                        <li><a class="cert-link" href="">Generative AI: Prompt Engineering Basics</a></li>
-                        <li><a class="cert-link" href="">Generative AI: Elevate your Data Engineering Career</a></li>
+                        <li><a class="cert-link" data-pdf="certifications/Generative AI - Introduction and Applications Certification.pdf">Generative AI: Introduction and Applications</a></li>
+                        <li><a class="cert-link" disabled>Generative AI: Prompt Engineering Basics</a></li>
+                        <li><a class="cert-link" disabled>Generative AI: Elevate your Data Engineering Career</a></li>
                     </ul>
                 </div>
 
-        
+                <div class="card span12 pdf-viewer-card">
+                    <div class="pdf-viewer-header">
+                        <strong id="viewer-title">Certificate Viewer</strong>
+                        <span class="meta" id="viewer-status">Select a certificate above to preview it here.</span>
+                    </div>
+                    <iframe id="certificate-viewer" title="Certification PDF viewer" class="pdf-viewer"
+                        src="about:blank"></iframe>
+                </div>
             </div>
         </section>
 
         <footer>© <span id="y"></span> Tu Nguyen</footer>
     </div>
-    
+    <script src="certifications.js"></script>
 </body>
 
 </html>
