@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (viewer) {
             viewer.src = "about:blank";
             viewer.style.display = "none";
-            document.getElementById("pdf-viewer").classList.add("disabled");  
+            document.getElementById("pdf-viewer").classList.add("pdf-viewer-disabled");  
         }
 
         if (placeholder) placeholder.style.display = "block";
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadPdf(pdfPath, titleText, filename) {
         if (!viewer) return;
         
-        document.getElementById("pdf-viewer").classList.remove("disabled");
+        document.getElementById("pdf-viewer").classList.remove("pdf-viewer-disabled");
 
         const cleanTitle = (titleText || "").trim() || "Certificate Viewer";
         const cleanFilename =
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (viewerStatus) viewerStatus.textContent = "(Previewing PDF)";
             if (pageRefreshed) {
                 pageRefreshed = false
-                document.getElementById("pdf-viewer").classList.remove("disabled");
+                document.getElementById("pdf-viewer").classList.remove("pdf-viewer-disabled");
             }
             viewer.scrollIntoView({ behavior: "smooth", block: "start" });
         } catch (err) {
@@ -122,4 +122,16 @@ document.addEventListener("DOMContentLoaded", () => {
             loadPdf(pdfPath, btn.textContent, filename);
         });
     });
+
+    // Handle program-level certificate (entire section)
+document.querySelectorAll(".cert-section-link").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const pdfPath = btn.dataset.pdf;
+    const filename = btn.dataset.filename;
+
+    if (!pdfPath) return;
+
+    loadPdf(pdfPath, btn.textContent, filename);
+  });
+});
 });
