@@ -73,11 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // If local file mode, avoid fetch() NetworkError
         if (location.protocol === "file:") {
-            if (viewerStatus) viewerStatus.textContent = "(Previewing PDF.)";
+            if (viewerStatus) viewerStatus.textContent = "(Previewing PDF)";
             viewer.src = pdfPath;
-
-            // download: in file mode, browser might ignore download name
-            setDownloadTarget(pdfPath, cleanFilename);
             return;
         }
 
@@ -96,10 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             viewer.src = currentBlobUrl;
 
-            // Download should use blob URL to preserve filename reliably
-            setDownloadTarget(currentBlobUrl, cleanFilename);
-
-            if (viewerStatus) viewerStatus.textContent = "(Previewing PDF.)";
+            if (viewerStatus) viewerStatus.textContent = "(Previewing PDF)";
             if (pageRefreshed) {
                 pageRefreshed = false
                 document.getElementById("pdf-viewer").classList.remove("disabled");
