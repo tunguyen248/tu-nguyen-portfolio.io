@@ -103,11 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(err);
 
             // Fallback: direct load
-            if (viewerStatus) viewerStatus.textContent = "Could not load via fetch; using direct preview.";
+            if (viewerStatus) console.log("Could not load via fetch; using direct preview.");
             viewer.src = pdfPath;
-
-            // Direct download link (filename may be ignored depending on headers)
-            setDownloadTarget(pdfPath, cleanFilename);
         }
     }
 
