@@ -76,6 +76,39 @@ const experiences = [
   },
 ];
 
+const certificationPrograms = [
+  {
+    title: "Google AI Essentials (Coursera)",
+    certificateCount: "5 certificates",
+    progressLabel: "Progress: 5/5 completed",
+    progressCurrent: 5,
+    progressMax: 5,
+    previewPdf: "certifications/Google AI Essentials Certification.pdf",
+    previewFilename: "Google AI Essentials Certification.pdf",
+    certificates: [
+      { title: "Introduction to AI", pdf: "certifications/Introduction to AI Certification.pdf" },
+      { title: "Maximize Productivity With AI Tools", pdf: "certifications/Maximize Productivity With AI Tools Certification.pdf" },
+      { title: "Discover the Art of Prompting", pdf: "certifications/Discover the Art of Prompting Certification.pdf" },
+      { title: "Use AI Responsibly", pdf: "certifications/Use AI Responsibly Certification.pdf" },
+      { title: "Stay Ahead of the AI Curve", pdf: "certifications/Stay Ahead of the AI Curve Certification.pdf" },
+    ],
+  },
+  {
+    title: "Generative AI for Data Engineers (Coursera)",
+    certificateCount: "3 certificates",
+    progressLabel: "Progress: 3/3 completed",
+    progressCurrent: 3,
+    progressMax: 3,
+    previewPdf: "certifications/Generative AI for Data Engineers Certification.pdf",
+    previewFilename: "Generative AI for Data Engineers Certification.pdf",
+    certificates: [
+      { title: "Generative AI: Introduction and Applications", pdf: "certifications/Generative AI - Introduction and Applications Certification.pdf" },
+      { title: "Generative AI: Prompt Engineering Basics", pdf: "certifications/Generative AI - Prompt Engineering Basics Certification.pdf" },
+      { title: "Generative AI: Advanced Prompt Engineering", pdf: "certifications/Generative AI - Advance Prompt Engineering Certification.pdf" },
+    ],
+  },
+];
+
 const HomeView = {
   data: () => ({ projects, experiences }),
   template: `
@@ -176,6 +209,106 @@ const DesignView = {
   `,
 };
 
+const CertificationsView = {
+  data() {
+    return {
+      programs: certificationPrograms,
+      selectedPdf: "",
+      selectedTitle: "Certificate Viewer",
+      selectedStatus: "Select a certificate above to preview it here.",
+    };
+  },
+  methods: {
+    selectCertificate(pdf, title) {
+      if (!pdf) {
+        return;
+      }
+
+      this.selectedPdf = pdf;
+      this.selectedTitle = title || "Certificate Viewer";
+      this.selectedStatus = "Previewing PDF";
+    },
+    closeViewer() {
+      this.selectedPdf = "";
+      this.selectedTitle = "Certificate Viewer";
+      this.selectedStatus = "Select a certificate above to preview it here.";
+    },
+    progressWidth(current, max) {
+      if (!max) {
+        return "0%";
+      }
+
+      const pct = Math.min(100, Math.round((current / max) * 100));
+      return `${pct}%`;
+    },
+  },
+  template: `
+    <section>
+      <h2>Certifications</h2>
+
+      <div class="grid">
+        <article class="card span6" v-for="program in programs" :key="program.title">
+          <button
+            class="cert-section-link"
+            type="button"
+            style="all:unset; cursor:pointer; font-weight:700; color:white"
+            @click="selectCertificate(program.previewPdf, program.title)"
+          >
+            {{ program.title }}
+          </button>
+
+          <div class="meta">{{ program.certificateCount }}</div>
+
+          <div class="cert-progress">
+            <div class="cert-progress-label">{{ program.progressLabel }}</div>
+            <div class="progress-track">
+              <span class="progress-fill" :style="{ width: progressWidth(program.progressCurrent, program.progressMax) }"></span>
+            </div>
+          </div>
+
+          <ul>
+            <li v-for="cert in program.certificates" :key="cert.title">
+              <a
+                class="cert-link"
+                role="button"
+                @click.prevent="selectCertificate(cert.pdf, cert.title)"
+                href="#"
+              >
+                {{ cert.title }}
+              </a>
+            </li>
+          </ul>
+        </article>
+
+        <article class="card span6 pdf-viewer-card" id="pdf-viewer" :class="{ 'pdf-viewer-disabled': !selectedPdf }">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+            <div>
+              <strong id="viewer-title">{{ selectedTitle }}</strong>
+              <div class="meta" id="viewer-status">{{ selectedStatus }}</div>
+            </div>
+            <div id="close-viewer" class="close-container" v-show="selectedPdf" @click="closeViewer">
+              <div class="leftright"></div>
+              <div class="rightleft"></div>
+              <label class="close">Close</label>
+            </div>
+          </div>
+
+          <div class="pdf-viewer-body">
+            <div class="meta" style="padding:12px 0;" v-if="!selectedPdf">Select a certificate above to preview it here.</div>
+            <iframe
+              v-else
+              id="certificate-viewer"
+              title="Certification PDF viewer"
+              class="pdf-viewer"
+              :src="selectedPdf"
+            ></iframe>
+          </div>
+        </article>
+      </div>
+    </section>
+  `,
+};
+
 const ContactView = {
   template: `
     <section>
@@ -191,6 +324,7 @@ const routes = [
   { path: "/", component: HomeView },
   { path: "/skills", component: SkillsView },
   { path: "/design", component: DesignView },
+  { path: "/certifications", component: CertificationsView },
   { path: "/contact", component: ContactView },
 ];
 
@@ -209,6 +343,7 @@ const app = Vue.createApp({
           <RouterLink to="/" class="nav-link">Home</RouterLink>
           <RouterLink to="/skills" class="nav-link">Skills</RouterLink>
           <RouterLink to="/design" class="nav-link">System Design</RouterLink>
+          <RouterLink to="/certifications" class="nav-link">Certifications</RouterLink>
           <RouterLink to="/contact" class="nav-link">Contact</RouterLink>
         </nav>
       </header>
