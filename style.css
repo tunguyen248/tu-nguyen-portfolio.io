@@ -296,14 +296,3 @@ label{
     pointer-events: none;
     opacity: 0.5;
 }
-.nav-link.router-link-active {
-    color: #bfdbfe;
-    text-decoration: underline;
-}
-
-.card-title-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-}
