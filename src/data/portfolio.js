@@ -114,7 +114,7 @@ export const portfolio = {
 
   experiences: [
     {
-      title: "Ameren Digital Co-op - Software Engineering Intern",
+      title: "Ameren Digital Co-op - Software Engineering Co-op",
       bullets: [
         "Built UI components in C#/.NET for Switching Manager, an electrical grid management application supporting power distribution workflows.",
         "Wrote and optimized SQL queries for Switching Manager, reducing query response time by 40% and improving data retrieval for grid-management workflows.",
