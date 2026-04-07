@@ -191,3 +191,5 @@ export const portfolio = {
     status: "Open to SWE roles",
   },
 };
+
+export default portfolio;

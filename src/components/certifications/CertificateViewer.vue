@@ -1,32 +1,56 @@
 <template>
-  <div class="card span12 pdf-viewer-card">
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+  <div
+    id="pdf-viewer"
+    class="card span12 pdf-viewer-card"
+    :class="{ 'pdf-viewer-disabled': !selectedPdf }"
+  >
+    <div
+      class="pdf-viewer-header"
+      style="display:flex; justify-content:space-between; align-items:center; gap:12px;"
+    >
       <div>
-        <strong>{{ selectedTitle || "Certificate Viewer" }}</strong>
-        <span class="meta">
-          {{
-            selectedPdf
-              ? "Previewing selected certificate."
-              : "Select a certificate above to preview it here."
-          }}
-        </span>
+        <strong id="viewer-title">{{ viewerTitle }}</strong>
+        <span class="meta" id="viewer-status">{{ viewerStatus }}</span>
       </div>
 
-      <button v-if="selectedPdf" type="button" @click="$emit('close')">
-        Close
-      </button>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <div
+          v-if="selectedPdf"
+          id="close-viewer"
+          class="close-container"
+          @click="$emit('close')"
+        >
+          <div class="leftright"></div>
+          <div class="rightleft"></div>
+          <label class="close">Close</label>
+        </div>
+      </div>
     </div>
 
+    <!-- Viewer body -->
     <div class="pdf-viewer-body">
-      <div v-if="!selectedPdf" class="meta" style="padding:12px 0;">
+      <div
+        v-if="!selectedPdf"
+        id="viewer-placeholder"
+        class="meta"
+        style="padding:12px 0;"
+      >
         Select a certificate above to preview it here.
       </div>
 
+      <!--
+        PDFs are served from public/certifications/.
+        Setting src directly is the most reliable approach for
+        locally-served files — no fetch/blob needed.
+      -->
       <iframe
-        v-else
-        :src="selectedPdf"
-        :title="selectedTitle || 'Certification PDF viewer'"
+        v-if="selectedPdf"
+        id="certificate-viewer"
+        ref="viewerFrame"
+        title="Certification PDF viewer"
         class="pdf-viewer"
+        :src="selectedPdf"
+        @load="onIframeLoad"
       ></iframe>
     </div>
   </div>
@@ -46,5 +70,33 @@ export default {
     },
   },
   emits: ["close"],
+  data() {
+    return {
+      loaded: false,
+    };
+  },
+  computed: {
+    viewerTitle() {
+      return this.selectedTitle || "Certificate Viewer";
+    },
+    viewerStatus() {
+      if (!this.selectedPdf) return "Select a certificate above to preview it here.";
+      return this.loaded ? "(Previewing PDF)" : "(Loading PDF...)";
+    },
+  },
+  watch: {
+    selectedPdf() {
+      // Reset loaded state whenever a new PDF is selected
+      this.loaded = false;
+      this.$nextTick(() => {
+        this.$refs.viewerFrame?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    },
+  },
+  methods: {
+    onIframeLoad() {
+      this.loaded = true;
+    },
+  },
 };
 </script>
