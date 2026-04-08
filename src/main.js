@@ -9,7 +9,7 @@ const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
   routes:[
     {
-      path: "/tu-nguyen-portfolio.io/",
+      path: "/",
       name: "home",
       component: HomePage,
     },
