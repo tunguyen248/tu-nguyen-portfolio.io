@@ -26,7 +26,7 @@ export const portfolio = {
       },
       {
         label: "Resume (PDF)",
-        href: "./Tu_Nguyen_Resume.pdf",
+        href: `./${process.env.BASE_URL}Tu_Nguyen_Resume.pdf`,
         primary: false,
       },
     ],
